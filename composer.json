@@ -3,9 +3,12 @@
     "description": "Magento 2 module for Password Security",
     "type": "magento2-module",
     "version": "1.0.0",
+    "license": [
+	    "proprietary"
+    ],
     "require": {
-        "php": "^7.0||^8.0",
-        "magento/framework": "103.0.*"
+        "php": "^8.1",
+        "magento/framework": ">=103.0.0"
     },
     "autoload": {
         "files": [
