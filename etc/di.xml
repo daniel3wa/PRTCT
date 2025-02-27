@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Customer\Model\AccountManagement">
+        <plugin name="custom_account_management_plugin" type="Mage42\PasswordSecurity\Plugin\Customer\Model\AccountManagementPlugin" />
+    </type>
+    <type name="Magento\User\Model\User">
+        <plugin name="customer_user_plugin" type="Mage42\PasswordSecurity\Plugin\User\Model\UserPlugin" />
+    </type>
+    <type name="Magento\Customer\Controller\Account\ResetPasswordPost">
+        <plugin name="reset_password_post_plugin" type="Mage42\PasswordSecurity\Plugin\Customer\Controller\Account\ResetPasswordPostPlugin" />
+    </type>
+    <type name="Magento\Customer\Controller\Account\EditPost">
+        <plugin name="edit_post_plugin" type="Mage42\PasswordSecurity\Plugin\Customer\Controller\Account\EditPostPlugin" />
+    </type>
+    <type name="Magento\Customer\Model\Authentication">
+        <plugin name="password_security_authentication_plugin" type="Mage42\PasswordSecurity\Plugin\Customer\Model\AuthenticationPlugin" />
+    </type>
+</config>

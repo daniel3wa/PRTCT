@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mage42" translate="label" sortOrder="100">
+            <label>Mage42</label>
+        </tab>
+        <section id="passwordsecurity" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Password Security</label>
+            <tab>mage42</tab>
+            <resource>Mage42_PasswordSecurity::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="api_key" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API Key</label>
+                    <validate>required-entry</validate>
+                    <frontend_class>validate-length maximum-length-256</frontend_class>
+                </field>
+                <field id="validate_api_key_button" translate="label" type="button" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Validate API Key</label>
+                    <frontend_model>Mage42\PasswordSecurity\Block\Adminhtml\Config\ValidateApiKeyButton</frontend_model>
+                </field>
+                <field id="http_timeout" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Http timeout (seconds)</label>
+                    <comment>If the time it takes to check the information with the server exceeds this value, skip the verification</comment>
+                    <validate>validate-digits</validate>
+                </field>
+            </group>
+            <group id="notifications" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Notification Settings</label>
+                <field id="userpass_failure_message" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email/ password combination leaked error message</label>
+                    <comment>This error is shown when a user attempts to log in or create a new password with an email address and password that are leaked.</comment>
+                </field>
+                <field id="pass_failure_message" translate="label" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Password leaked error message</label>
+                    <comment>This error is shown when a user attempts to log in or create a new password with a password that is leaked.</comment>
+                </field>
+                <field id="disallow_login" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Block users from logging in with a leaked password</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>When enabled, this forces users to create a new password when they attempt to log in with one that is leaked. Leaving this unchecked will still give a warning to a customer, but will allow them to ignore it, and continue logging in.</comment>
+                </field>
+                <field id="userpass_warning_message" translate="label" type="textarea" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email/ password combination warning message</label>
+                    <comment>This warning is shown when a user attempts to log in or create a new password with an email address and password that are leaked.</comment>
+                    <depends>
+                        <field id="disallow_login">0</field>
+                    </depends>
+                </field>
+                <field id="pass_warning_message" translate="label" type="textarea" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Password warning message</label>
+                    <comment>This warning is shown when a user attempts to log in or create a new password with a password that is leaked.</comment>
+                    <depends>
+                        <field id="disallow_login">0</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

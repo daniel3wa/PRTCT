@@ -1,0 +1,27 @@
+<button type="button" class="action-default scalable" onclick="validateApiKey()">
+    <span><?= __('Validate API Key') ?></span>
+</button>
+<script type="text/javascript">
+    function validateApiKey() {
+        require(['jquery', 'mage/url', 'mage/mage'], function ($, urlBuilder) {
+            var url = '<?= $block->getButtonUrl() ?>';
+            var formKey = $('input[name="form_key"]').val(); // Get the form key from the current form
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    form_key: formKey // Include the form key in the POST data
+                },
+                showLoader: true,
+                success: function (response) {
+                    alert(response.message);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error occurred:', error);
+                    alert('An error occurred while validating the API key.');
+                }
+            });
+        });
+    }
+</script>
