@@ -2,7 +2,7 @@
     "name": "mage42/module-passwordsecurity",
     "description": "Magento 2 module for Password Security",
     "type": "magento2-module",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": [
 	    "proprietary"
     ],
